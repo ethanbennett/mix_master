@@ -12,10 +12,14 @@ class PlaylistsController < ApplicationController
     redirect_to @playlist
   end
 
+  def show
+    @playlist = Playlist.find(params[:id])
+  end
+
 private
 
   def playlist_params
-    params.require(:playlist).permit(:name, :song_ids: [])
+    params.require(:playlist).permit(:name, song_ids: [])
   end
 
 end
